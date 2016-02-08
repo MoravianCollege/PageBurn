@@ -271,6 +271,13 @@
       <option name="number" value="Default" />
       <updated>1454905157548</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created main method&#10;   - Takes in a tag&#10;   - Appends tag to method&#10;   - Calls upon flickr api&#10; &#10; Changed&#10;   - Method from getRectent to Search&#10;   - for the dictionary changed tag: to tags: &#10;                -flickr.photos.search did not work without above change">
+      <created>1454905665422</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1454905665422</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
