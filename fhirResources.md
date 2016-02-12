@@ -1,6 +1,6 @@
 
-Fhir Resources
-==============
+# FHIR Resources
+
 
 ## Helpful
 
@@ -10,7 +10,7 @@ Fhir Resources
 ## Ok
 
 
-* [HL7 FHIR Webinar by HL7 FHIR Governance Board Co-Chair and Corepoint Health CTO Dave Shaver](https://www.youtube.com/watch?v=XVif_-ya8I0) - This video gives a high-level overview of FHIR and where it sits within the world of medic data representation.  Worthwhile for big picture information, but limited technical details (BJC)
+* [HL7 FHIR Webinar by HL7 FHIR Governance Board Co-Chair and Corepoint Health CTO Dave Shaver](https://www.youtube.com/watch?v=XVif_-ya8I0) - This video gives a high-level overview of FHIR and where it sits within the world of medical data representation.  Worthwhile for big picture information, but limited technical details (BJC)
 
 
 ##Don’t Bother
