@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><Practitioner xmlns="http://hl7.org/fhir">
+	<id value="example"/>
+	
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+		<p>Enkeshafi, Ardalan is our example practitioner</p>
+		</div>
+	</text>
+  
+	<identifier>
+		<system value ="http://www.acme.org/practitioners"/>
+		<value value = "42"/>
+	</identifier>
+	
+	<active value = "true"/>
+	<name>
+		<family value="Enkeshafi"/>
+		<given value="Ardalan"/>
+		<prefix value="M.D."/>
+	</name>
+	
+	<practitionerRole>
+		<managingOrganization>
+			<reference value="Facility"/>
+		</managingOrganization>
+		
+		<role>
+			<coding>
+				<system value ="http://hl7.org/fhir/v2/0286"/>
+				<code value ="PP"/>
+			</coding>
+		</role>
+		
+		<healthcareService>
+			<reference value = "Initial Hospital Care"/>
+		</healthcareService>
+		
+	</practitionerRole>
+
+</Practitioner>
+			
+		
+		
+			
