@@ -185,10 +185,12 @@ within a single provider, HCPCS service, and place of service.
 
 ##Ideas
 So far we have two general ideas for how to fill the resources
+
 ###Extensions
 * The first idea is to use extensions on practitioner. This would give us the benifit of only having one resource per line of DocGraph Data. 
 * The problem with it is that now it makes some of the data harder to get at. For example, a few of the fields seem to be more about specific procedures rather than the practitioner itself.
 * Also if we are trying to have a practitioner be just a practitioner, then by stuffing it with extensions we now made it be a practitioner that also holds some medicare data as well as medical procedure data.
+
 ###Multiple Resources
 * Our second idea is to split the data up into a few different resources.
 * The bulk of the data can go into the Practitioner resource as shown above. 
