@@ -67,6 +67,5 @@ public class Main
 		String encoded = ctx.newXmlParser().encodeResourceToString(patient2);
 		System.out.println(encoded);
 
-		System.out.println( "Hello World!" );
     }
 }
