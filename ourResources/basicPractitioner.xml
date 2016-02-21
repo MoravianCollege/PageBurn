@@ -4,36 +4,36 @@
 	<text>
 		<status value="generated"/>
 		<div xmlns="http://www.w3.org/1999/xhtml">
-		<p>Enkeshafi, Ardalan is our example practitioner</p>
+		<p>This is where basic text will go to be viewed in a browser</p>
 		</div>
 	</text>
   
 	<identifier>
 		<system value ="http://www.acme.org/practitioners"/>
-		<value value = "1003000126"/>
+		<value value = "NPI Number goes Here"/>
 	</identifier>
 	
 	<active value = "true"/>
 	<name>
-		<family value="Enkeshafi"/>
-		<given value="Ardalan"/>
-		<prefix value="M.D."/>
+		<family value="nppes_provider_last_org_name"/>
+		<given value="nppes_provider_first_name"/>
+		<prefix value="nppes_credentials"/>
 	</name>
 	
 	<practitionerRole>
 		<managingOrganization>
-			<reference value="Facility"/>
+			<reference value="place_of_service"/>
 		</managingOrganization>
 		
 		<role>
 			<coding>
 				<system value ="http://hl7.org/fhir/v2/0286"/>
-				<code value ="PP"/>
+				<code value ="provider_type -> FHIR has special two letter codes for this"/>
 			</coding>
 		</role>
 		
 		<healthcareService>
-			<reference value = "Initial Hospital Care"/>
+			<reference value = "hcpcs_code, hcpcs_description"/>
 		</healthcareService>
 		
 	</practitionerRole>

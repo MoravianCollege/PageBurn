@@ -18,4 +18,5 @@ data.
 * The validator issues warnings becuase I do not have valid URI's for 
 some of the fields for it to check against valid data however, it DOES 
 pass the validator. After running the bottom line says ... success. 
+* Note too that the FHIR fields are the docgraph tag names for ease of seeing what is going on.
 
