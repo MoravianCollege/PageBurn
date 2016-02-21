@@ -186,74 +186,139 @@ within a single provider, HCPCS service, and place of service.
 
 #The next set of Definitions are for the NPPES data fields
 
-**NPI** --> NPI, max length of 10 
+**NPI** --> NPI, max length of 10 --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
+
 **Entity Type Code** --> max length 1 
-**Replacement NPi**
-**Employer Identification Number (EIN)**
-**Provider Organization Name (Legal Business Name)**
-**Provider Last Name (Legal Name)**
-**Provider First Name**
-**Provider Middle Name**
-**Provider Name Prefix Text**
-**Provider Name Suffix Text**
-**Provider Credential Text**
-**Provider Other Organization Name**
-**Provider Other Organization Name Type Code** --> Max Length 1
+
+**Replacement NPi** --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
+
+**Employer Identification Number (EIN)** --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
+
+**Provider Organization Name (Legal Business Name)** 
+
+**Provider Last Name (Legal Name)** --> [Practitioner.Name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name).
+
+**Provider First Name** --> [Practitioner.Name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name).
+
+**Provider Middle Name** --> [Practitioner.Name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name).
+
+**Provider Name Prefix Text** --> [Practitioner.Name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name).
+
+**Provider Name Suffix Text** -->[Practitioner.Name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name).
+
+**Provider Credential Text** --> [Practitioner.qualification](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.qualification)
+
+**Provider Other Organization Name** --> [Practitioner.practitionerRole.managingOrganization](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.managingOrganization)
+
+**Provider Other Organization Name Type Code** --> Max Length 1 --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
+
 **Provider Other Last Name**
+
 **Provider Other First Name**
+
 **Provider Other Middle Name**
+
 **Provider Other Name Prefix Text**
+
 **Provider Other Name Suffix Text**
+
 **Provider Other Credential Text**
+
 **Provider Other Last Name Type Code** --> Max lenght 10
+
 **Provider First line Business Mailing Address**
+
 **Provider Second line Business Mailing Address**
+
 **Provider Business Mailing Address City Name**
+
 **Provider Business Mailing Address State Name**
+
 **Provider Business Mailing Address Postal Code**
+
 **Provider Business Mailing Adress Country Code** --> Needed for outside US
-**Provider Business Mailing Address Telephone Number**
-**Provider Business Mailing Address Fax Number**
+
+**Provider Business Mailing Address Telephone Number** --> [Practitioner.telecom](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.telecom)
+
+**Provider Business Mailing Address Fax Number** --> [Practitioner.telecom](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.telecom)
+
 **Provider First Line Business Practice Location Address**
+
 **Provider Second Line Business Practice Location Address**
+
 **Provider Business Practice Location Address City Name**
+
 **Provider Business Practice Location Address State Name**
+
 **Provider Business Practice Location Address Postal Code**
+
 **Provider Business Practitce Location Address Country Code** --> Only if outside US
+
 **Provider Business Practice Location Address Telephone Number**
+
 **Provider Business Practice Location Address Fax Number**
+
 **Provider Enumberation Date** -->(MM/DD/YYYY)
+
 **Last Update Date** --> (MM/DD/YYYY)
+
 **NPI Deactivation Reason Code** --> Max Length 2
+
 **NPI Deactivation Date)** --> (MM/DD/YYYY)
+
 **Provider Gender Code** --> Max length 1
+
 **Authorized Official Last Name**
+
 **Authorized Official First Name**
+
 **Authorized Official Middle Name**
+
 **Authorized Official Title or Position**
+
 **Authorized Official Telephone Number**
+
 **HealthCare Provider Taxonomy Code_1** --> Max Length 104
+
 **Provider License Number_1**
+
 **Provider License Number State Code_1** --> Max Length 2
+
 **Healthcare Provider Primary Taxonomy Switch_1**
+
 ### The Previous 4 Fields repeat for a total of 15 sets of different possible versions
+
 **Other Provider Identifier_1**
+
 **Other Provider Identifier Type Code_1**
+
 **Other Provider Identifier State_1**
+
 **Other Provider Identifier Issuer_1**
+
 ### The previous 3 Fields repeat for a total of 50 possible sets
+
 **Is Sole Proprietor** --> Max length 10
+
 **Is Organization Subpart** --> Max Length 1
+
 **Parent Organization LBN** --> LBN = legal business name
+
 **Parent Organization TIN** 
+
 **Authorized Official Name Prefix Text**
+
 **Authorized Official Name Suffix Text**
+
 **Authorized Official Credential Text**
+
 **Healthcare Provider Taxonomy Group_1** --> You can have 15 of these
 
-##Ideas
-So far we have two general ideas for how to fill the resources
 
+
+##Ideas
+
+So far we have two general ideas for how to fill the resources
 ###Extensions
 * The first idea is to use extensions on practitioner. This would give us the benifit of only having one resource per line of DocGraph Data. 
 * The problem with it is that now it makes some of the data harder to get at. For example, a few of the fields seem to be more about specific procedures rather than the practitioner itself.
