@@ -186,15 +186,15 @@ within a single provider, HCPCS service, and place of service.
 
 #The next set of Definitions are for the NPPES data fields
 
-**NPI** --> NPI, max length of 10 --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
+**NPI** --> *NPI, max length of 10* --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
 
-**Entity Type Code** --> max length 1 
+**Entity Type Code** --> *max length 1* 
 
-**Replacement NPi** --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
+**Replacement NPI** --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
 
 **Employer Identification Number (EIN)** --> [Practitioner.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.identifier)
 
-**Provider Organization Name (Legal Business Name)** 
+**Provider Organization Name (Legal Business Name)** --> [Pratitioner.practitionerRole.managingOrganization](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.managingOrganization)
 
 **Provider Last Name (Legal Name)** --> [Practitioner.Name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name).
 
@@ -210,9 +210,9 @@ within a single provider, HCPCS service, and place of service.
 
 **Provider Other Organization Name** --> [Practitioner.practitionerRole.managingOrganization](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.managingOrganization)
 
-**Provider Other Organization Name Type Code** --> Max Length 1 --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
+**Provider Other Organization Name Type Code** --> *Max Length* 1 --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
-**Provider Other Last Name**
+**Provider Other Last Name** --> According to FHIR they feel it is unimportant and uncommon to know about other names [Read Requirements for name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name)
 
 **Provider Other First Name**
 
@@ -222,67 +222,67 @@ within a single provider, HCPCS service, and place of service.
 
 **Provider Other Name Suffix Text**
 
-**Provider Other Credential Text**
+**Provider Other Credential Text** --> [Practitioner.qualification](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.qualification) *if it is from certification or schooling*
 
-**Provider Other Last Name Type Code** --> Max lenght 10
+**Provider Other Last Name Type Code** --> *Max length 10*
 
-**Provider First line Business Mailing Address**
+**Provider First line Business Mailing Address** --> [Practitioner.address](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.address)
 
-**Provider Second line Business Mailing Address**
+**Provider Second line Business Mailing Address** --> [Practitioner.address](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.address)
 
-**Provider Business Mailing Address City Name**
+**Provider Business Mailing Address City Name** --> [Practitioner.address](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.address)
 
-**Provider Business Mailing Address State Name**
+**Provider Business Mailing Address State Name** --> [Practitioner.address](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.address)
 
-**Provider Business Mailing Address Postal Code**
+**Provider Business Mailing Address Postal Code** --> [Practitioner.address](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.address)
 
-**Provider Business Mailing Adress Country Code** --> Needed for outside US
+**Provider Business Mailing Adress Country Code** --> *Needed for outside US* --> [Practitioner.address](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.address)
 
 **Provider Business Mailing Address Telephone Number** --> [Practitioner.telecom](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.telecom)
 
 **Provider Business Mailing Address Fax Number** --> [Practitioner.telecom](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.telecom)
 
-**Provider First Line Business Practice Location Address**
+**Provider First Line Business Practice Location Address** --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
-**Provider Second Line Business Practice Location Address**
+**Provider Second Line Business Practice Location Address** --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
-**Provider Business Practice Location Address City Name**
+**Provider Business Practice Location Address City Name** --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
-**Provider Business Practice Location Address State Name**
+**Provider Business Practice Location Address State Name** --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
-**Provider Business Practice Location Address Postal Code**
+**Provider Business Practice Location Address Postal Code** --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
-**Provider Business Practitce Location Address Country Code** --> Only if outside US
+**Provider Business Practitce Location Address Country Code** --> *Only if outside US* --> [Practitioner.practitionerRole.location](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.practitionerRole.location)
 
 **Provider Business Practice Location Address Telephone Number**
 
 **Provider Business Practice Location Address Fax Number**
 
-**Provider Enumberation Date** -->(MM/DD/YYYY)
+**Provider Enumberation Date** -->*(MM/DD/YYYY)* --> Need to figure out what Enumberation Date means
 
-**Last Update Date** --> (MM/DD/YYYY)
+**Last Update Date** --> *(MM/DD/YYYY)* [Practioner.active](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.active) Process to get boolean, or put in observation or in an extension
 
-**NPI Deactivation Reason Code** --> Max Length 2
+**NPI Deactivation Reason Code** --> *Max Length 2* --> [Practitioner.active](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.active) observation
 
-**NPI Deactivation Date)** --> (MM/DD/YYYY)
+**NPI Deactivation Date)** --> (MM/DD/YYYY) --> [Pratitioner.active](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.active) if exists field = false
 
-**Provider Gender Code** --> Max length 1
+**Provider Gender Code** --> Max length 1 --> [Practitioner.gender(https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.gender) 
 
-**Authorized Official Last Name**
+**Authorized Official Last Name** --> [Practitioner.name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name)
 
-**Authorized Official First Name**
+**Authorized Official First Name** --> [Practitioner.name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name)
 
-**Authorized Official Middle Name**
+**Authorized Official Middle Name** --> [Practitioner.name](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.name)
 
-**Authorized Official Title or Position**
+**Authorized Official Title or Position** [Practitioner.qualification.identifier](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.qualification.identifier)
 
-**Authorized Official Telephone Number**
+**Authorized Official Telephone Number** --> [Practitioner.telecom](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.telecom)
 
-**HealthCare Provider Taxonomy Code_1** --> Max Length 104
+**HealthCare Provider Taxonomy Code_1** --> *Max Length 10*
 
-**Provider License Number_1**
+**Provider License Number_1** --> Another Identifier?
 
-**Provider License Number State Code_1** --> Max Length 2
+**Provider License Number State Code_1** --> *Max Length 2*
 
 **Healthcare Provider Primary Taxonomy Switch_1**
 
@@ -294,15 +294,15 @@ within a single provider, HCPCS service, and place of service.
 
 **Other Provider Identifier State_1**
 
-**Other Provider Identifier Issuer_1**
+**Other Provider Identifier Issuer_1** --> [Practitioner.qualification.issuer](https://www.hl7.org/fhir/practitioner-definitions.html#Practitioner.qualification.issuer) Only if these identifiers deal with some sort of qualification via a certificate or other
 
 ### The previous 3 Fields repeat for a total of 50 possible sets
 
-**Is Sole Proprietor** --> Max length 10
+**Is Sole Proprietor** --> *Max length 10*
 
-**Is Organization Subpart** --> Max Length 1
+**Is Organization Subpart** --> *Max Length 1*
 
-**Parent Organization LBN** --> LBN = legal business name
+**Parent Organization LBN** --> *LBN = legal business name*
 
 **Parent Organization TIN** 
 
@@ -312,7 +312,7 @@ within a single provider, HCPCS service, and place of service.
 
 **Authorized Official Credential Text**
 
-**Healthcare Provider Taxonomy Group_1** --> You can have 15 of these
+**Healthcare Provider Taxonomy Group_1** --> *You can have 15 of these*
 
 
 
