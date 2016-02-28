@@ -6,6 +6,7 @@ import ca.uhn.fhir.model.dstu2.composite.IdentifierDt;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 import ca.uhn.fhir.model.dstu2.valueset.NameUseEnum;
 import ca.uhn.fhir.parser.IParser;
+import java.io.IOException;
 
 /**
  * Hello HAPI!
@@ -66,6 +67,16 @@ public class Main
 		// We can now use a parser to encode this resource into a string.
 		String encoded = ctx.newXmlParser().encodeResourceToString(patient2);
 		System.out.println(encoded);
-
+                
+                FHIRwriter a = new FHIRwriter();
+                try
+                {
+                    a.readIn("file-name add filepath go here to run example");
+                }
+                catch(IOException e)
+                {
+                    System.out.println("File not found");
+                }
+                
     }
 }
