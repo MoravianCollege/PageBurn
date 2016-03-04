@@ -4,6 +4,8 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.dstu2.composite.HumanNameDt;
 import ca.uhn.fhir.model.dstu2.composite.IdentifierDt;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
+import ca.uhn.fhir.model.dstu2.resource.Composition;
+import ca.uhn.fhir.model.dstu2.resource.Composition.Section;
 import ca.uhn.fhir.model.dstu2.valueset.NameUseEnum;
 import ca.uhn.fhir.parser.IParser;
 import java.io.IOException;
@@ -63,6 +65,11 @@ public class Main
 		name.addFamily("Tester");
 		name.addGiven("John");
 		name.addGiven("Q");
+                
+                
+                Composition comp= new Composition();
+                
+                Section sect= new Section();
 		 
 		// We can now use a parser to encode this resource into a string.
 		String encoded = ctx.newXmlParser().encodeResourceToString(patient2);
@@ -71,7 +78,7 @@ public class Main
                 FHIRwriter a = new FHIRwriter();
                 try
                 {
-                    a.readIn("file-name add filepath go here to run example");
+                    a.readIn("Users/khristianmorel/test.txt");
                 }
                 catch(IOException e)
                 {
