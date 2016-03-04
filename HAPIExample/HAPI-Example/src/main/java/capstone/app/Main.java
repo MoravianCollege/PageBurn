@@ -71,7 +71,7 @@ public class Main
                 FHIRwriter a = new FHIRwriter();
                 try
                 {
-                    a.readIn("file-name add filepath go here to run example");
+                    a.readIn("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
                 }
                 catch(IOException e)
                 {
