@@ -41,7 +41,7 @@ public class AppTest
 
         FW.readIn("src/test/test files/TestFieldData.txt");
 
-        assertEquals(27, FW.getFields().size() == 27);
+        assertEquals(27, FW.getFields().size());
     }
 
     /**
