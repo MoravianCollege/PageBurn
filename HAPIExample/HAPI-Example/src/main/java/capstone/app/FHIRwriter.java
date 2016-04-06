@@ -94,4 +94,10 @@ public class FHIRwriter
     {
         return tokens;
     }
+    
+    public ArrayList<String> processLine(String line)
+    {
+        return null; // take in the line and split like it does above, but instead of printing put into an array correctly
+        // also, this only processes one line, not all of them, main will feed this line by line.
+    }
 }
