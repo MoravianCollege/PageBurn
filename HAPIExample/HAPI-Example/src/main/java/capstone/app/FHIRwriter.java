@@ -97,7 +97,27 @@ public class FHIRwriter
     
     public ArrayList<String> processLine(String line)
     {
-        return null; // take in the line and split like it does above, but instead of printing put into an array correctly
+        String[] tokes = line.split("\t");
+            for (int i = 0; i < (tokes.length); i++)
+            {
+                //System.out.println(tokes[i]);
+                tokens.add(tokes[i]);
+
+            }
+        
+        int testI = 0;
+        for (int i = 29; i < tokens.size(); i++)
+        {
+            tokens.add(tokes[i]);
+            if (tokens.get(i).endsWith(" "))
+            {
+                testI++;
+                tokens.add("No Data");
+            }
+            System.out.print("\n");
+            testI++;
+        }
+        return tokens; // take in the line and split like it does above, but instead of printing put into an array correctly
         // also, this only processes one line, not all of them, main will feed this line by line.
     }
 }
