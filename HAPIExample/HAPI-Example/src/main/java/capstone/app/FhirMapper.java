@@ -14,18 +14,18 @@ import java.util.ArrayList;
  */
 public class FhirMapper 
 {
-    public boolean exists(int NPI)
+    public boolean exists(String NPI)
     {
         return false; // check NPI against current resource NPI
     }
     
-    public void createPractitioner(ArrayList<String> data)
+    public void createPractitioner(DocData data)
     {
         // Create new practitioner object and use all elements of array
         
     }
     
-    public void addAttributes(ArrayList<String> data)
+    public void addAttributes(DocData data)
     {
         // add all non-common elements of array to Practitioner object
     }

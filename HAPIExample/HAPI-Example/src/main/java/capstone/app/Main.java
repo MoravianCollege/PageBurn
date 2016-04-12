@@ -8,7 +8,11 @@ import ca.uhn.fhir.model.dstu2.resource.Composition;
 import ca.uhn.fhir.model.dstu2.resource.Composition.Section;
 import ca.uhn.fhir.model.dstu2.valueset.NameUseEnum;
 import ca.uhn.fhir.parser.IParser;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Hello HAPI!
@@ -74,8 +78,49 @@ public class Main
 		// We can now use a parser to encode this resource into a string.
 		String encoded = ctx.newXmlParser().encodeResourceToString(patient2);
 		System.out.println(encoded);
+//-----------------------------------------------------------------------------------------------------------------------------------
+// Our Code Starts here, I left above code so we could still see the example stuff while we are still playing
+                DocReader reader = new DocReader();
+                FhirMapper mapper = new FhirMapper();
+                FhirPrinter printer = new FhirPrinter();
+                DocData data = null;
+                boolean passedFirstIteration = false;
                 
-                DocReader a = new DocReader();
+                try
+                {
+                    FileInputStream inputStream = new FileInputStream("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) // going to go through each line of the file
+                    {
+                        data = reader.processLine(line); // put a line into a DocData Element
+                        if(passedFirstIteration == false)
+                        {
+                            mapper.createPractitioner(data); // mapper will use all fields for the practitioner
+                        }
+                        else if(mapper.exists(data.get_NPI()) == true) // Current Resource has matching NPI
+                        {
+                            mapper.addAttributes(data); //having mapper add just the necessary fields to the practitioner
+                        }
+                        else // NPI's don't match, move on to next resource
+                        {
+                            printer.outputResource(mapper.getResource()); // before overriding, output the current resource to a file.
+                            mapper.createPractitioner(data); // override old practitioner with a shiny new one
+                        }
+                        
+                        
+                        passedFirstIteration = true; // we now know there will always exist a resource from now until the end.
+                    }
+                } catch (FileNotFoundException e)
+                {
+                    System.out.println("File Not Found! File Not Found Exception");
+                }
+                catch (IOException e)
+                {
+                    System.out.println("File Not Found! IO Exception");
+                }
+                /*
                 try
                 {
                     a.readIn("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
@@ -87,6 +132,6 @@ public class Main
                 {
                     System.out.println("File not found");
                 }
-                
+                */
     }
 }

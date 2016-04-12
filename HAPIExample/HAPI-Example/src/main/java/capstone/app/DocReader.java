@@ -95,29 +95,27 @@ public class DocReader
         return tokens;
     }
     
-    public ArrayList<String> processLine(String line)
+    public DocData processLine(String line)
     {
-        String[] tokes = line.split("\t");
-            for (int i = 0; i < (tokes.length); i++)
-            {
-                //System.out.println(tokes[i]);
-                tokens.add(tokes[i]);
-
-            }
-        
-        int testI = 0;
-        for (int i = 29; i < tokens.size(); i++)
+        String[] tokes = line.split("\t"); // split our line into a string array
+        for (int i = 0; i < tokes.length; i++)
         {
-            tokens.add(tokes[i]);
-            if (tokens.get(i).endsWith(" "))
+            tokens.add(tokes[i]); // we know the dr will ALWAYS have an NPI so we can get away with adding an element to the array first
+            if(tokes[i].endsWith(" ")) // know next index has no data
             {
-                testI++;
-                tokens.add("No Data");
+                i++; // skip to next index
+                tokens.add("No Data"); // put no data so it isn't a null in there
             }
-            System.out.print("\n");
-            testI++;
         }
-        return tokens; // take in the line and split like it does above, but instead of printing put into an array correctly
-        // also, this only processes one line, not all of them, main will feed this line by line.
+        
+        DocData data = new DocData(); //create the bean! 
+        return data.set_NPI(tokens.get(0)).set_nppes_provider_last_org_name(tokens.get(1)).set_nppes_provider_first_name(tokens.get(2)).set_nppes_provider_mi(tokens.get(3))
+                .set_nppes_credentials(tokens.get(4)).set_nppes_provider_gender(tokens.get(5)).set_nppes_entity_code(tokens.get(6)).set_nppes_provider_street1(tokens.get(7))
+                .set_nppes_provider_street2(tokens.get(8)).set_nppes_provider_city(tokens.get(9)).set_nppes_provider_zip(tokens.get(10)).set_nppes_provider_state(tokens.get(11))
+                .set_nppes_provider_country(tokens.get(12)).set_provider_type(tokens.get(13)).set_medicare_participation_indicator(tokens.get(14)).set_place_of_service(tokens.get(15))
+                .set_hcpcs_code(tokens.get(16)).set_hcpcs_description(tokens.get(17)).set_line_srvc_cnt(tokens.get(18)).set_bene_unique_cnt(tokens.get(19)).set_bene_day_srvc_cnt(tokens.get(20))
+                .set_average_Medicare_allowed_amt(tokens.get(21)).set_stdev_Medicare_allowed_amt(tokens.get(22)).set_average_submitted_chrg_amt(tokens.get(23)).set_stdev_submitted_chrg_amt(tokens.get(24))
+                .set_average_Medicare_payment_amt(tokens.get(25)).set_stdev_Medicare_payment_amt(tokens.get(26)); //use bean power to fill the whole object and return it in all of
+                // its wonderful glory.
     }
 }
