@@ -75,7 +75,7 @@ public class Main
 		String encoded = ctx.newXmlParser().encodeResourceToString(patient2);
 		System.out.println(encoded);
                 
-                FHIRwriter a = new FHIRwriter();
+                DocReader a = new DocReader();
                 try
                 {
                     a.readIn("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");

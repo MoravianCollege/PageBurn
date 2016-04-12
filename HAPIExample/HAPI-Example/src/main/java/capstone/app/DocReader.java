@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author khristianmorel
  */
-public class FHIRwriter
+public class DocReader
 {
 
     private ArrayList<String> tokens = new ArrayList<String>();

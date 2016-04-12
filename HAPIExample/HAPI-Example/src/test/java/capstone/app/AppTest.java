@@ -12,12 +12,12 @@ import org.junit.Before;
 public class AppTest
 {
 
-    FHIRwriter FW;
+    DocReader FW;
 
     @Before
     public void Setup()
     {
-        FW = new FHIRwriter();
+        FW = new DocReader();
     }
 
     /**
