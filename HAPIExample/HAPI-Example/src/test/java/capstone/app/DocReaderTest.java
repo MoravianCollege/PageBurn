@@ -1,6 +1,9 @@
 package capstone.app;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -30,7 +33,7 @@ public class DocReaderTest
     }
 
     /**
-     * Tests FHIRWriter when reading in data from medicare data to make sure it
+     * Tests DocReader when reading in data from medicare data to make sure it
      * gets 27 fields of data.
      *
      * @throws IOException
@@ -43,8 +46,16 @@ public class DocReaderTest
 
         assertEquals(27, FW.getFields().size());
     }
-
-    /**
+    
+    @Test
+    public void testDocReader2Times() throws IOException
+    {
+        FW.readIn("src/test/test files/TestFieldData.txt");
+        FW.readIn("src/test/test files/TestFieldData.txt");
+        
+        assertEquals(54, FW.getFields().size());
+    }
+            /**
      * Test FHIRWriter when reading in data from ha1c data to make sure it gets
      * 16 fields of data. 
      * Uncomment test once parser has been updated to read in this data.
@@ -104,5 +115,43 @@ public class DocReaderTest
             assertEquals(testData.get(i), FW.getFields().get(i));
         }
 
+    }
+    
+    @Test
+    public void testDocReaderSameNPI() throws IOException
+    {
+        int numLines = 10;
+        for (int x = 0; x < numLines; x ++)
+        {
+            FW.readIn("src/test/test files/TestFieldData.txt");
+        }
+             
+           
+        for (int i =0; i<numLines; i++)
+        {
+            assertEquals("1234567890", FW.getFields().get(i*27));
+        }
+    }
+    
+    
+    ///This tests passes but it shouldn't something is wrong with he DocData
+    @Test
+    public void testDocReaderHeader() throws IOException
+    {
+        DocData data = null;
+        FileInputStream inputStream = new FileInputStream("src/test/test files/Test11RowsData.txt");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+        String line;
+        while ((line = bufferedReader.readLine()) != null) // going to go through each line of the file
+        {
+            data = FW.processLine(line); // put a line into a DocData Element
+        
+        System.out.println("//////////////////////////////////////////////////////////////");
+        System.out.println(data.get_NPI());
+        System.out.println("//////////////////////////////////////////////////////////////");
+        
+            assertEquals("1234567890", data.get_NPI());
+        }
     }
 }
