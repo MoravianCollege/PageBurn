@@ -134,24 +134,47 @@ public class DocReaderTest
     }
     
     
-    ///This tests passes but it shouldn't something is wrong with he DocData
+    @Test
+    public void testDocReaderDifferentNPI() throws IOException
+    {
+        int numLines = 12;
+        for (int x = 0; x < numLines; x ++)
+        {
+            FW.readIn("src/test/test files/Test11RowsData.txt");
+        }
+             
+           
+        for (int i =0; i<numLines; i++)
+        {
+            if (i < 10)
+                assertEquals("1234567890", FW.getFields().get(i*27));
+            else
+                assertEquals("2345678901", FW.getFields().get(i*27));
+            
+        }
+    }
+    
+    
+    ///Make sure data cleans itself
     @Test
     public void testDocReaderHeader() throws IOException
     {
-        DocData data = null;
+        //DocData data = null;
         FileInputStream inputStream = new FileInputStream("src/test/test files/Test11RowsData.txt");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
+        
         String line;
+        int count = 0;
         while ((line = bufferedReader.readLine()) != null) // going to go through each line of the file
         {
+            DocData data = new DocData();
             data = FW.processLine(line); // put a line into a DocData Element
-        
-        System.out.println("//////////////////////////////////////////////////////////////");
-        System.out.println(data.get_NPI());
-        System.out.println("//////////////////////////////////////////////////////////////");
-        
-            assertEquals("1234567890", data.get_NPI());
+            System.out.println("//////////////"+data.get_NPI()+"????????????????????????????");
+            if(count < 10)
+                assertEquals("1234567890", data.get_NPI());
+            else
+                assertEquals("2345678901", data.get_NPI());
+            count += 1;
         }
     }
 }

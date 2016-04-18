@@ -97,6 +97,7 @@ public class DocReader
     
     public DocData processLine(String line)
     {
+        tokens = new ArrayList <String>();
         String[] tokes = line.split("\t"); // split our line into a string array
         for (int i = 0; i < tokes.length; i++)
         {
