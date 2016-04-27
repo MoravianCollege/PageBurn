@@ -309,7 +309,7 @@ public class DocData
         return bene_day_srvc_cnt;
     }
     
-    public String set_average_Medicare_allowed_amt()
+    public String get_average_Medicare_allowed_amt()
     {
         return average_Medicare_allowed_amt;
     }
