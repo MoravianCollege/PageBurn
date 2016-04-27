@@ -59,15 +59,15 @@ public class FhirMapper
         credential = new Practitioner.Qualification().addIdentifier(new IdentifierDt("system", data.get_nppes_credentials())); // get rid of system, when we decide on namespace
         practitioner.addQualification(credential); // load credential as a qualification int practitioner
         
-        if(data.get_nppes_provider_gende().equals("M"))
+        if(data.get_nppes_provider_gende().equals("M")) // gender of male
         {
             practitioner.setGender(AdministrativeGenderEnum.MALE);
         }
-        else if(data.get_nppes_provider_gende().equals("F"))
+        else if(data.get_nppes_provider_gende().equals("F")) // gender of Female
         {
             practitioner.setGender(AdministrativeGenderEnum.FEMALE);
         }
-        else
+        else    // Anything other than M or F
         {
             practitioner.setGender(AdministrativeGenderEnum.UNKNOWN);
         }
