@@ -8,21 +8,27 @@ package capstone.app;
 import ca.uhn.fhir.model.api.IDatatype;
 import ca.uhn.fhir.model.dstu2.composite.AddressDt;
 import ca.uhn.fhir.model.dstu2.composite.BoundCodeableConceptDt;
+import ca.uhn.fhir.model.dstu2.composite.CodeableConceptDt;
 import ca.uhn.fhir.model.dstu2.composite.HumanNameDt;
 import ca.uhn.fhir.model.dstu2.composite.IdentifierDt;
 import ca.uhn.fhir.model.dstu2.composite.ResourceReferenceDt;
 import ca.uhn.fhir.model.dstu2.resource.Observation;
+import ca.uhn.fhir.model.dstu2.resource.Observation.Component;
 import ca.uhn.fhir.model.dstu2.resource.Practitioner;
 import ca.uhn.fhir.model.dstu2.resource.Practitioner.PractitionerRole;
 import ca.uhn.fhir.model.dstu2.resource.Practitioner.Qualification;
 import ca.uhn.fhir.model.dstu2.valueset.AdministrativeGenderEnum;
 import ca.uhn.fhir.model.dstu2.valueset.PractitionerRoleEnum;
+import ca.uhn.fhir.model.primitive.StringDt;
 import java.util.ArrayList;
 
 
 public class FhirMapper 
 {
     Practitioner practitioner;
+    ArrayList<Observation> observations;
+    ArrayList<ResourceReferenceDt> performers; //this will be for the observation performer ie it will have one element with the practitioner in it
+    
     public boolean exists(String NPI)
     {
         if(NPI.equals(practitioner.getId()))
@@ -74,19 +80,127 @@ public class FhirMapper
             practitioner.setGender(AdministrativeGenderEnum.UNKNOWN);
         }
         
-        ArrayList<ResourceReferenceDt> performers = new ArrayList();
-        performers.add(new ResourceReferenceDt(practitioner));
+        performers = new ArrayList(); // make the array list a new one to empty it for the new practitioner
+        performers.add(new ResourceReferenceDt(practitioner)); // put the practitioner in as a performer
+        
+        observations = new ArrayList(); // clear the observations array for the new practitioner
         
         Observation observation = new Observation();
         observation.setPerformer(performers);
-
-                 
+        observation.setCode(new CodeableConceptDt("system", "average_Medicare_allowed_amt")); //according to HAPI documentation, this is where the name goes
+        observation.setValue(new StringDt(data.get_average_Medicare_allowed_amt()));
+        
+        observations.add(observation); // put it in our array so we dont have to use 1000 variable names floating everywhere
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "stdev_Medicare_allowed_amt"));
+        observation.setValue(new StringDt(data.get_stdev_Medicare_allowed_amt()));
+        
+        observations.add(observation); //add to the observations array
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system","average_Medicare_payment_amt"));
+        observation.setValue(new StringDt(data.get_average_Medicare_payment_amt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("syste", "stdev_Medicare_payment_amt"));
+        observation.setValue(new StringDt(data.get_stdev_Medicare_payment_amt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "average_submitted)chrg_amt"));
+        observation.setValue(new StringDt(data.get_average_submitted_chrg_amt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "stdev_submitted_chrg_amt"));
+        observation.setValue(new StringDt(data.get_stdev_submitted_chrg_amt(null)));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "bene_day_srvc_cnt"));
+        observation.setValue(new StringDt(data.get_bene_day_srvc_cnt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "bene_unique_cnt"));
+        observation.setValue(new StringDt(data.get_bene_unique_cnt()));
+        
+        observations.add(observation);
+              
         
     }
     
     public void addAttributes(DocData data)
     {
-        // add all non-common elements of array to Practitioner object
+        Observation observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "average_Medicare_allowed_amt")); //according to HAPI documentation, this is where the name goes
+        observation.setValue(new StringDt(data.get_average_Medicare_allowed_amt()));
+        
+        observations.add(observation); // put it in our array so we dont have to use 1000 variable names floating everywhere
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "stdev_Medicare_allowed_amt"));
+        observation.setValue(new StringDt(data.get_stdev_Medicare_allowed_amt()));
+        
+        observations.add(observation); //add to the observations array
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system","average_Medicare_payment_amt"));
+        observation.setValue(new StringDt(data.get_average_Medicare_payment_amt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("syste", "stdev_Medicare_payment_amt"));
+        observation.setValue(new StringDt(data.get_stdev_Medicare_payment_amt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "average_submitted)chrg_amt"));
+        observation.setValue(new StringDt(data.get_average_submitted_chrg_amt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "stdev_submitted_chrg_amt"));
+        observation.setValue(new StringDt(data.get_stdev_submitted_chrg_amt(null)));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "bene_day_srvc_cnt"));
+        observation.setValue(new StringDt(data.get_bene_day_srvc_cnt()));
+        
+        observations.add(observation);
+        
+        observation = new Observation();
+        observation.setPerformer(performers);
+        observation.setCode(new CodeableConceptDt("system", "bene_unique_cnt"));
+        observation.setValue(new StringDt(data.get_bene_unique_cnt()));
+        
+        observations.add(observation);
     }
     
     public Practitioner getResource()
