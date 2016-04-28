@@ -5,11 +5,13 @@
  */
 package capstone.app;
 
+import ca.uhn.fhir.model.api.IDatatype;
 import ca.uhn.fhir.model.dstu2.composite.AddressDt;
 import ca.uhn.fhir.model.dstu2.composite.BoundCodeableConceptDt;
 import ca.uhn.fhir.model.dstu2.composite.HumanNameDt;
 import ca.uhn.fhir.model.dstu2.composite.IdentifierDt;
 import ca.uhn.fhir.model.dstu2.composite.ResourceReferenceDt;
+import ca.uhn.fhir.model.dstu2.resource.Observation;
 import ca.uhn.fhir.model.dstu2.resource.Practitioner;
 import ca.uhn.fhir.model.dstu2.resource.Practitioner.PractitionerRole;
 import ca.uhn.fhir.model.dstu2.resource.Practitioner.Qualification;
@@ -71,6 +73,13 @@ public class FhirMapper
         {
             practitioner.setGender(AdministrativeGenderEnum.UNKNOWN);
         }
+        
+        ArrayList<ResourceReferenceDt> performers = new ArrayList();
+        performers.add(new ResourceReferenceDt(practitioner));
+        
+        Observation observation = new Observation();
+        observation.setPerformer(performers);
+
                  
         
     }
