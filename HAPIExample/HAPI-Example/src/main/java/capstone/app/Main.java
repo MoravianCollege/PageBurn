@@ -120,18 +120,5 @@ public class Main
                 {
                     System.out.println("File Not Found! IO Exception");
                 }
-                /*
-                try
-                {
-                    a.readIn("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
-
-                    //a.readIn("Users/khristianmorel/test.txt");
-
-                }
-                catch(IOException e)
-                {
-                    System.out.println("File not found");
-                }
-                */
     }
 }
