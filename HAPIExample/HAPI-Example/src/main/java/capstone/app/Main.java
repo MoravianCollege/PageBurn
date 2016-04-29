@@ -85,18 +85,24 @@ public class Main
                 FhirPrinter printer = new FhirPrinter();
                 DocData data = null;
                 boolean passedFirstIteration = false;
+                boolean atData= false;
+                int count = 0;
 
                 try
                 {
-                    FileInputStream inputStream = new FileInputStream("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
+                    FileInputStream inputStream = new FileInputStream("/docgraph/Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     
                     String line;
                     while ((line = bufferedReader.readLine()) != null) // going to go through each line of the file
                     {
+                        if(atData==true){
                         data = reader.processLine(line); // put a line into a DocData Element
+                        }
+                        
                         if(passedFirstIteration == false)
                         {
+                            data = reader.processLine(line);
                             mapper.createPractitioner(data); // mapper will use all fields for the practitioner
                         }
                         else if(mapper.exists(data.get_NPI()) == true) // Current Resource has matching NPI
@@ -105,11 +111,14 @@ public class Main
                         }
                         else // NPI's don't match, move on to next resource
                         {
-                            printer.outputXML(mapper.getResource()); // before overriding, output the current resource to a file.
+                            printer.outputJSON(mapper.getResource()); // before overriding, output the current resource to a file.
                             mapper.createPractitioner(data); // override old practitioner with a shiny new one
                         }
                         
+                        if (count>2)
+                            atData=true;
                         
+                        count++;
                         passedFirstIteration = true; // we now know there will always exist a resource from now until the end.
                     }
                 } catch (FileNotFoundException e)
