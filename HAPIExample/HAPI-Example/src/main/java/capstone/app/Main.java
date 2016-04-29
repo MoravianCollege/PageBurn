@@ -85,7 +85,7 @@ public class Main
                 FhirPrinter printer = new FhirPrinter();
                 DocData data = null;
                 boolean passedFirstIteration = false;
-                
+
                 try
                 {
                     FileInputStream inputStream = new FileInputStream("\\docgraph\\Medicare-Physician-and-Other-Supplier-PUF-CY2012-head.txt");
@@ -105,7 +105,7 @@ public class Main
                         }
                         else // NPI's don't match, move on to next resource
                         {
-                            printer.outputResource(mapper.getResource()); // before overriding, output the current resource to a file.
+                            printer.outputXML(mapper.getResource()); // before overriding, output the current resource to a file.
                             mapper.createPractitioner(data); // override old practitioner with a shiny new one
                         }
                         
