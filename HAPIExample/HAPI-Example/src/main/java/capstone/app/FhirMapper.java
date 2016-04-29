@@ -48,9 +48,9 @@ public class FhirMapper
         
         practitioner = new Practitioner(); //create new practitioner
         practitioner.setId(data.get_NPI());
-        practitioner.setName(new HumanNameDt().addGiven(data.get_nppes_provider_first_name()).addFamily(data.get_nppes_provider_last_org_name()));
+        practitioner.setName(new HumanNameDt().addGiven(data.get_nppes_provider_first_name() + " " + data.get_nppes_provider_mi()).addFamily(data.get_nppes_provider_last_org_name()));
         addresses.add(new AddressDt());
-        addresses.get(0).addLine(data.get_nppes_provider_street1()).setCity(data.get_nppes_provider_city()).setState(data.get_nppes_provider_state()).setPostalCode(data.get_nppes_provider_zip());
+        addresses.get(0).addLine(data.get_nppes_provider_street1()).addLine(data.get_nppes_provider_street2()).setCity(data.get_nppes_provider_city()).setState(data.get_nppes_provider_state()).setPostalCode(data.get_nppes_provider_zip());
         roles.add(new PractitionerRole().setRole(PractitionerRoleEnum.DOCTOR)); //add a role to the roles array, DOCTOR is only enum that makes sense
         descriptions.add(new ResourceReferenceDt().setDisplay(data.get_hcpcs_description()).setReference(data.get_hcpcs_code())); // add the description as the display and set its id to the code value
         roles.get(0).setHealthcareService(descriptions); // load the healthcare services into the role
